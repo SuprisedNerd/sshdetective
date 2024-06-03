@@ -68,17 +68,18 @@ def read_filters_and_search_contents(filter_file_path, results_file_path):
                     print(f"An error occurred while reading file '{result_file}': {e}")
 
         if matched_files:
-            print("Files containing all filter lines:")
-            for matched_file in matched_files:
-                print(matched_file)
-        else:
-            print("No files matched all filter lines.")
+            with open(results_file_path, 'a') as results_file:
+                results_file.write("Files containing all filter lines:\n")
+                for matched_file in matched_files:
+                    results_file.write(matched_file + '\n')
+
     except Exception as e:
         print(f"An error occurred while processing filters or results: {e}")
 
 def main():
     names = read_names_from_file('searches.txt')
-    results_file_path = os.path.join('results', 'results.txt')
+    now = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    results_file_path = os.path.join('results', f'results_{now}.txt')
     if names:  # Only proceed if names were successfully read
         search_for_names(names, results_file_path)
         read_filters_and_search_contents('filter.txt', results_file_path)
