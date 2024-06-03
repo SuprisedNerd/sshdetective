@@ -1,0 +1,10 @@
+-----BEGIN OPENSSH PRIVATE KEY-----
+-----END OPENSSH PRIVATE KEY-----
+ssh-rsa
+ssh-dss
+ecdsa-sha2-nistp521
+ecdsa-sha2-nistp384
+ecdsa-sha2-nistp256
+ssh-ed25519
+ssh-ed25519
+==
