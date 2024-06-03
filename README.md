@@ -1,0 +1,1 @@
+Simple low level programming python ssh key finder with the sole intent to find files that look like ssh keys and analyze their contents to confirm them using filters (filter.txt) and show a list in the form of a text file (results) showing the locations of the matching items and the ones that just contained a search critera (searches.txt).
