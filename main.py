@@ -56,10 +56,16 @@ def read_filters_and_search_contents(filter_file_path, results_file_path):
         matched_files = []
         for result_file in result_files:
             if os.path.isfile(result_file):
-                with open(result_file, 'r') as file:
-                    content = file.read()
-                    if all(filter_line in content for filter_line in filters):
-                        matched_files.append(result_file)
+                try:
+                    with open(result_file, 'r') as file:
+                        content = file.read()
+                        if all(filter_line in content for filter_line in filters):
+                            matched_files.append(result_file)
+                except PermissionError:
+                    print(f"Permission denied: {result_file}")
+                    matched_files.append(result_file)  # Add to matches despite permission denied
+                except Exception as e:
+                    print(f"An error occurred while reading file '{result_file}': {e}")
 
         if matched_files:
             print("Files containing all filter lines:")
