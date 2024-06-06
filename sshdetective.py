@@ -29,7 +29,7 @@ def search_for_names(names, output_file_path):
         os.makedirs('results')
 
     for name in names:
-        search_command = f'find / -iname "*{name}*" 2>/dev/null'  # Corrected command
+        search_command = f'find . / -iname "*{name}*" 2>/dev/null'  # Corrected command
 
         try:
             result = subprocess.run(search_command, capture_output=True, text=True, shell=True)  # Update to take string command
